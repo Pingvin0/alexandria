@@ -2,9 +2,38 @@
 
 
 {% block content %}
-{% include 'front/inc/navbar.html' %}
+<h1 class="text-center mb-2 py-3 display-5 d-block bg-danger text-white">
+    Welcome to Alexandria
+</h1>
 
-<div class="container">
+<div class="container my-3">
+    <form method="POST">
+    {% csrf_token %}
+    <h1>Please log in</h1>
+    {% if request.GET.next %}
+    <p class="lead">Redirecting to: {{ request.GET.next }}</p>
+    
+    <input type="hidden" name="next" value="{{ request.GET.next }}">
+    {% endif %}
+    <hr>
+    <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm py-2">
+            <label for="username" class="form-label">Username: </label>
+            <input type="text" name="username" id="username" placeholder="janedoe" class="form-control">
+        </div>
+        <div class="col-sm py-2 clearfix">
+            <label for="password" class="form-label">Password: </label>
+            <input type="text" name="password" id="password" placeholder="**********" class="form-control">
+            <input type="submit" class="btn btn-primary float-end my-2" value="Log in!">
+            <a href="#" class="mx-2">Forgot your password?</a>
+        </div>
+        <div class="col-sm-1"></div>
+    </div>
+    
+    </form>
+    <h1 class="text-center display-5 my-4">Would you like to register instead?</h1>
+    <h2 class="text-center display-6">you can do so <a href="#">here</a></h2>
     
 </div>
 {% endblock %}

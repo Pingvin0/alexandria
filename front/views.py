@@ -13,7 +13,7 @@ def api_keys(request):
     return render(request, 'front/render/api_keys.html')
 
 def login_form(request):
-    if request.is_authenticated:
+    if request.user.is_authenticated:
         return HttpResponseRedirect(reverse('front:index'))
     
     if request.method == "POST":
@@ -22,7 +22,7 @@ def login_form(request):
         return render(request, 'front/render/login.html')
 
 def register_form(request):
-    if request.is_authenticated:
+    if request.user.is_authenticated:
         return HttpResponseRedirect(reverse('front:index'))
     
     if request.method == "POST":

@@ -4,5 +4,6 @@ app_name = "front"
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('api_keys/', views.api_keys, name='api_keys')
+    path('api_keys/', views.api_keys, name='api_keys'),
+    path('login/', views.login_form, name='login')
 ]
