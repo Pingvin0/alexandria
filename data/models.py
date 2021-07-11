@@ -8,6 +8,8 @@ User = get_user_model()
 class DataCategory(models.Model):
     created = models.DateTimeField('created', auto_now=True)
     creator = models.ForeignKey(User, models.CASCADE)
+    name = models.CharField(max_length=32)
+    identifier = models.CharField(max_length=16, unique=True)
     type = models.CharField(max_length=8)
     
 class DataRecord(models.Model):
